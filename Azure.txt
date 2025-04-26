@@ -74,6 +74,26 @@ Subnet A uses 256 addresses, Subnet B uses another 256, so together they use 512
 You still have 65,536 - 512 = 65,024 addresses left to create more subnets or assign to other resources.
 Fun Fact: In real cloud setups (like Azure), a few IP addresses in each subnet are reserved (e.g., for network management), so you might get 251 usable addresses out of 256.
 
+The Four Levels of Azure Resource Hierarchy
+Management Groups
+This is the top level of the hierarchy. Think of it like the headquarters of a company. Management Groups let you group multiple subscriptions together under one umbrella. This makes it easier to apply the same policies (like security or compliance rules) and manage permissions across all those subscriptions at once.
+Example: Imagine a big company with subscriptions for different regions or departments. A Management Group ties them all together so the company can enforce consistent rules across everything.
+Subscriptions
+Subscriptions are the next level down, kind of like departments in a company. Each subscription is a logical container for your resources, helping you separate different environments (like production vs. development), departments, or projects. They’re also key for billing, so you can track costs for specific parts of your organization.
+Example: A company might have one subscription for its live production apps and another for testing in development. This keeps the costs and access separate and manageable.
+Resource Groups
+These sit inside subscriptions and are like teams within a department. A Resource Group is a container that holds related resources—like virtual machines, databases, or storage accounts—that work together for a specific application or project. Grouping them makes it easier to manage their lifecycle (deploying, updating, or deleting them) as a unit.
+Example: For a web app, you might have a Resource Group that includes the web server, a database, and some storage. Managing them together simplifies everything.
+Resources
+These are the individual pieces at the bottom level—like the workers or tools in our company analogy. Resources are the actual services you use in Azure, such as virtual machines, databases, or storage accounts. Each one lives inside a Resource Group and does the actual work for your applications.
+Example: A virtual machine running your web server or a SQL database storing your app’s data are both Resources.
 
+What is a Tenant in Azure?
+A tenant in Azure is the top-level container for your cloud environment. Technically, it’s a dedicated instance of Azure Active Directory (Azure AD), which is Microsoft’s identity and access management service. Here’s what that means in simple terms:
+
+Identity Hub: The tenant is where all your users, groups, and applications are managed. It’s the central place for controlling who can access your Azure resources.
+Isolation: Each tenant is completely separate from others, keeping your data and resources secure and private.
+
+Starting Point: When you sign up for Azure, you get a tenant automatically. If you’re with a company, your organization likely has its own tenant that you work within.
 
 
