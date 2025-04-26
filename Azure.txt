@@ -96,4 +96,52 @@ Isolation: Each tenant is completely separate from others, keeping your data and
 
 Starting Point: When you sign up for Azure, you get a tenant automatically. If you’re with a company, your organization likely has its own tenant that you work within.
 
+az login
+ az --version
+ az account list
+ az account list --output table
+ az account list --output yaml
+ az account list --output json
+ az config set defaults.location="eastus"
+ az config set defaults.group="gowriRG"
+ az account list
+ az account set --subscription "bf7e75db-e819-49ca-b6d2-69c32a2353fe"
+ az group list
+ az group list --help
+  az group list --query "[?location=='eastus']"
+  az group list --query "[?name=='gowrirRG']"
+  az group list --query "[].name" --output tsv
+  az group list --query "[].name" --output tsv | grep gowriRG
+  az group list --query "[].name" --output tsv >> abc.txt
+  az config get defaults
+  az vm list
+  az vm list -g Admin-Azure --query "[].name" --output tsv
+  az vm list -g Admin-Azure --query "[].{Name:name}" --output tsv
+  az vm list -g Admin-Azure --query "[].{Name:name, ResourceGroup:resourceGroup}" --output tsv
+  az storage account list
+  az storage account list -g NewVilasRG
+az storage account list -g gowriRG
+env | grep -i storage
+
+
+PowerShell Commands
+
+Connect-AzAccount
+Connect-AzAccount -UseDeviceAuthentication
+get-AzContext
+set-AzContext -Subscription "bf7e75db-e819-49ca-b6d2-69c32a2353fe"
+get-AzSubscription
+Get-AzResourceGroup
+Get-AzResourceGroup --help
+get-AzResourceGroup -Location centralindia
+get-AzResourceGroup -Name gowriRG
+get-AzVM -ResourceGroupName gowriRG
+ get-AzVM
+ remove-AzVM 
+ new-AzvM -ResourceGroupName gowriRG -Location centralindia
+get-AzVM
+ 
+we create a VM and set the OS disk and NIC to be deleted when we delete the VM.
+
+New-AzVm -ResourceGroupName "myResourceGroup" -Name "myVM" -OSDiskDeleteOption Delete -NetworkInterfaceDeleteOption Delete -Location "East US" -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress"
 
