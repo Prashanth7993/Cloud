@@ -145,3 +145,52 @@ we create a VM and set the OS disk and NIC to be deleted when we delete the VM.
 
 New-AzVm -ResourceGroupName "myResourceGroup" -Name "myVM" -OSDiskDeleteOption Delete -NetworkInterfaceDeleteOption Delete -Location "East US" -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress"
 
+Difference Between Active Directory Domain Service & Microsoft Entra ID.
+What Are They?
+
+AD DS (Active Directory Domain Services): This is a traditional system for managing users, computers, and resources in an on-premises network (think of a company’s internal network with physical servers). It’s part of the broader Active Directory family but focuses on being a directory service.
+
+Microsoft Entra ID: This is a cloud-based identity solution designed for internet-based applications and services, like Microsoft 365 or third-party apps (e.g., Facebook logins). It’s not just a cloud version of AD DS—it’s built differently for modern, online needs.
+
+Both help manage “who you are” (identity) in a system, but they work in different environments and have unique features.
+Example to Understand the Difference
+Imagine you run a company called TechCorp with 100 employees. Here’s how AD DS and Microsoft Entra ID would work for you:
+Scenario 1: Using AD DS On-Premises
+Setup: You have a physical office with Windows servers and desktops. You install AD DS on a server to manage everything.
+What happens:
+You create an OU called “Sales” for your sales team and set a GPO to enforce a 90-day password reset policy for them.
+Employee Sarah logs into her office desktop. AD DS uses Kerberos to verify her identity securely within the company network.
+You use LDAP to search for all Sales team members in the directory.
+Sarah’s desktop is a “computer object” in AD DS, tied to the domain (e.g., techcorp.local).
+Purpose: AD DS controls the internal network, ensuring all devices and users follow company rules.
+Key Characteristics:
+AD DS
+Where it lives: On-premises (on physical or virtual servers in your company).
+Structure: Hierarchical (like a tree with branches), using Organizational Units (OUs) to organize users and Group Policy Objects (GPOs) to set rules (e.g., password policies).
+How it works: Uses LDAP (a protocol to query the directory) and Kerberos (for secure authentication).
+Features: Manages computer objects (e.g., desktops joined to the network) and uses trusts between domains for collaboration.
+Example use: Controlling an internal company network.
+Scenario 2: Using Microsoft Entra ID in the Cloud
+Setup: TechCorp starts using Microsoft 365 (e.g., Teams, Outlook online) and a web app like Dropbox. You use Microsoft Entra ID to manage access to these cloud services.
+What happens:
+Sarah’s account syncs from AD DS to Microsoft Entra ID so she can use the same username and password.
+She logs into Microsoft Teams from her laptop (at home or the office) using OpenID Connect, not Kerberos, because it’s over the internet.
+There’s no “Sales” OU or GPO—her account is just in a flat list of users and groups.
+You query her account details using a REST API, not LDAP, because it’s cloud-based.
+She also logs into Dropbox using her TechCorp credentials, thanks to federation with Microsoft Entra ID.
+Purpose: Microsoft Entra ID handles identity for cloud and web apps, even outside the office
+
+
+Microsoft Entra ID P1 and P2
+These plans are designed to enhance security
+Entra ID P1 and P2 are premium licensing tiers of Microsoft Entra ID that unlock additional functionality beyond the basic (Free) version. These plans are designed to enhance security, streamline identity management, and support hybrid environments where organizations use both cloud and on-premises resources. They can be 
+
+purchased as standalone licenses or as part of the Microsoft Enterprise Mobility + Security (EMS) suite, which also includes Azure Information Protection and Intune.
+P1: Provides a robust set of features focused on secure access, self-service capabilities, and hybrid identity integration.
+P2: Builds on P1 by adding advanced identity protection and privileged access management, catering to organizations with heightened security and compliance needs.
+Microsoft offers a free trial for P2, allowing organizations to test its full functionality before committing to a purchase.
+
+Entra ID Protection (P2 only): Adds risk-based conditional access and user behavior monitoring, making it ideal for proactive threat prevention.
+Privileged Identity Management (P2 only): Focuses on securing administrative roles, reducing the risk of privilege misuse or overexposure.
+
+
