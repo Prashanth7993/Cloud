@@ -163,8 +163,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "Vmscaleset" {
     }
   }
 
-  admin_username                  = "adminuser"
-  admin_password                  = "Password1234!"  # Replace with SSH keys for security
+  admin_username                  = "xxxxxxxxxxxxx"
+  admin_password                  = "xxxxxxxxxxxxx"  # Replace with SSH keys for security
   disable_password_authentication = false
 
   upgrade_mode = "Manual"
