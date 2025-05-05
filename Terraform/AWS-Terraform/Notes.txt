@@ -1,0 +1,41 @@
+Provider Block
+Why: Tells Terraform to use AWS and specifies the region (e.g., us-east-1).
+Purpose: Defines where resources are deployed, like choosing an Azure region (e.g., East US).
+Azure Analogy: Similar to setting a region in Azure CLI or ARM templates.
+Note: Region can be changed (e.g., to us-west-2) as needed.
+
+VPC Resource Block
+Why: Creates a Virtual Private Cloud (VPC), a private network for AWS resources.
+Purpose: Sets IP range (e.g., 10.0.0.0/16), enables DNS resolution and hostnames, names the VPC (e.g., MyVPC).
+Azure Analogy: Like an Azure Virtual Network (VNet) with an address space.
+Note: Large CIDR allows multiple subnets; DNS settings support EC2 naming.
+
+Internet Gateway Resource Block
+Why: Creates an Internet Gateway (IGW) for VPC internet connectivity.
+Purpose: Attaches to the VPC to allow public subnet resources to access the internet, named (e.g., MyIGW).
+Azure Analogy: No direct equivalent; similar to Azure’s public IP internet routing.
+Note: Requires a route table to direct traffic to the IGW.
+
+Public Subnet Resource Block
+Why: Creates a subnet for internet-facing resources (e.g., web servers).
+Purpose: Allocates IP range (e.g., 10.0.1.0/24) in an Availability Zone (e.g., us-east-1a), auto-assigns public IPs, names it (e.g., PublicSubnet).
+Azure Analogy: Like an Azure subnet with public IP assignments.
+Note: Needs a route table with an IGW route to be truly public.
+
+Private Subnet Resource Block
+Why: Creates a subnet for isolated resources (e.g., databases).
+Purpose: Allocates IP range (e.g., 10.0.2.0/24) in a different Availability Zone (e.g., us-east-1b), no public IPs, names it (e.g., PrivateSubnet).
+Azure Analogy: Like an Azure private subnet without public IPs.
+Note: Uses VPC’s default route table, keeping it isolated from the internet.
+
+Route Table Resource Block
+Why: Defines traffic routing for the public subnet.
+Purpose: Routes all non-VPC traffic (0.0.0.0/0) to the IGW, includes automatic intra-VPC (local) route, names it (e.g., PublicRouteTable).
+Azure Analogy: Like an Azure route table with a 0.0.0.0/0 route to “Internet”.
+Note: Enables internet access for the public subnet.
+
+Route Table Association Resource Block
+Why: Links the public subnet to the custom route table.
+Purpose: Ensures the public subnet uses the route table with the IGW route for internet access.
+Azure Analogy: Like associating an Azure route table with a subnet.
+Note: Private subnet uses default route table (no internet route).
