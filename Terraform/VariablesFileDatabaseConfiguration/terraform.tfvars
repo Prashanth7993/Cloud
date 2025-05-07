@@ -1,0 +1,6 @@
+resource_group_name = "myapp-rg"
+location           = "East US"
+sql_server_name    = "myappsqlserver123"
+sql_db_name        = "myappdb"
+admin_username     = "sqladmin"
+admin_password     = "P@ssw0rd123!"
